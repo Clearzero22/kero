@@ -63,7 +63,7 @@ kero config check             # report unknown keys and bad values
 
 | Key                   | Default | Description                                                              |
 | --------------------- | ------- | ------------------------------------------------------------------------ |
-| `theme`               | `paper` | The theme of the window, its panes and terminals: one of Kero's (`petal`, `mist`, `meadow`, `dusk`, `tide`, `apricot`, `aurora`, `dune`, `paper` or `plain`), any Ghostty theme, or one for each appearance, as `light:paper,dark:dusk` |
+| `theme`               | `paper` | The theme of the window, its panes and terminals: one of Kero's (`petal`, `mist`, `meadow`, `dusk`, `tide`, `apricot`, `aurora`, `dune`, `onyx`, `paper` or `plain`), any Ghostty theme, or one for each appearance, as `light:paper,dark:dusk` |
 | `font-family`         |         | Empty for JetBrains Mono Nerd Font, which Kero includes; `monospace` for the system's; or any installed family |
 | `font-size`           | `13`    | In points                                                                |
 | `font-weight`         | `400`   | `100` to `900`                                                           |

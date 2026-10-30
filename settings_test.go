@@ -132,6 +132,17 @@ func TestThemePerAppearance(t *testing.T) {
 	shot(t, tt, "theme-per-appearance")
 }
 
+// Onyx is black: its cards sit nearly on the black of its wash in the
+// dark, and take paper's white in the light.
+func TestOnyxIsBlack(t *testing.T) {
+	if l, _, _ := oklch(keroLook("onyx", true).term.Background); l > 0.1 {
+		t.Errorf("onyx's cards are %v in the dark, want near black", l)
+	}
+	if l, _, _ := oklch(keroLook("onyx", false).term.Background); l < 0.9 {
+		t.Errorf("onyx's cards are %v in the light, want white", l)
+	}
+}
+
 // Dark pages, and the plain background, for a look ($KERO_SHOTS).
 func TestDarkShots(t *testing.T) {
 	a := testApp(t)

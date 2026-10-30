@@ -314,7 +314,7 @@ var keroLooks = func() map[string][2]*look {
 				}
 			} else {
 				var accent ui.Color
-				l.term, accent = toneTheme(w.tone, dark)
+				l.term, accent = toneTheme(w.tone, dark, w.cardL)
 				l.pal = tinted(l.term, accent)
 			}
 			both[i] = l
@@ -381,8 +381,9 @@ type tone struct{ hue, tint, vivid, accent float32 }
 
 // toneTheme is a kero theme's terminal colors, and its accent: its cards
 // and text tinted with its hue, and the programs' colors muted to sit
-// with them, the cursor and selection in its hue.
-func toneTheme(t tone, dark bool) (*terminal.Theme, ui.Color) {
+// with them, the cursor and selection in its hue. cardL is the cards'
+// lightness in the dark, 0 for the usual.
+func toneTheme(t tone, dark bool, cardL float32) (*terminal.Theme, ui.Color) {
 	tint := func(l, c float32) ui.Color { return ui.Oklch(l, c*t.tint, t.hue) }
 	// Red, green, yellow, blue, magenta and cyan.
 	hues := [6]float32{28, 145, 85, 255, 325, 195}
@@ -395,7 +396,10 @@ func toneTheme(t tone, dark bool) (*terminal.Theme, ui.Color) {
 		ls = [6]float32{0.70, 0.74, 0.80, 0.70, 0.72, 0.76}
 		cs = [6]float32{0.14, 0.13, 0.12, 0.12, 0.13, 0.10}
 		bright = 0.06
-		th.Background, th.Foreground = tint(0.255, 0.02), tint(0.92, 0.015)
+		if cardL == 0 {
+			cardL = 0.255
+		}
+		th.Background, th.Foreground = tint(cardL, 0.02), tint(0.92, 0.015)
 		th.Palette[0], th.Palette[7], th.Palette[8], th.Palette[15] = tint(0.36, 0.02), tint(0.82, 0.012), tint(0.5, 0.02), tint(0.96, 0.01)
 		th.Selection = ui.Oklch(0.38, 0.06, t.accent)
 		accent = ui.Oklch(0.74, 0.13, t.accent)
@@ -446,6 +450,10 @@ type wash struct {
 	light, dark         []string
 	lightGlow, darkGlow ui.Color
 	tone                tone
+	// cardL is the lightness of the theme's cards in the dark, as oklch:
+	// 0 for the usual, which sits on its wash; a theme of black cards sets
+	// it lower.
+	cardL float32
 }
 
 var washTable = map[string]wash{
@@ -491,6 +499,14 @@ var washTable = map[string]wash{
 		light: []string{"#ede4d8", "#f1e9de", "#f4eee4", "#f3efe8"}, lightGlow: ui.RGBA(242, 222, 194, 0.7),
 		dark: []string{"#22190b", "#211a0e", "#201b12"}, darkGlow: ui.RGBA(135, 79, 0, 0.3),
 		tone: tone{80, 0.7, 0.55, 80},
+	},
+	// Black cards on black, in a cool gray, with a blue accent: the dark
+	// of an unlit room, quiet as paper.
+	"onyx": {
+		light: []string{"#eef0f3", "#f2f3f5", "#f4f5f7"}, lightGlow: ui.RGBA(215, 224, 238, 0.45),
+		dark: []string{"#000000", "#030304", "#060607"}, darkGlow: ui.RGBA(60, 84, 140, 0.14),
+		tone: tone{260, 0, 0.9, 262},
+		cardL: 0.07,
 	},
 	// White paper on a desk of light gray, in ink, flat and quiet.
 	"paper": {

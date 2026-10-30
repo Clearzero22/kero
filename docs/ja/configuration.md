@@ -63,7 +63,7 @@ kero config check             # 不明なキーと不正な値を報告
 
 | キー                  | デフォルト | 説明                                                                     |
 | --------------------- | ---------- | ------------------------------------------------------------------------ |
-| `theme`               | `paper`    | ウインドウ、ペイン、ターミナルのテーマ: Kero のテーマ（`petal`、`mist`、`meadow`、`dusk`、`tide`、`apricot`、`aurora`、`dune`、`paper`、`plain`）、任意の Ghostty テーマ、または `light:paper,dark:dusk` のように外観ごとに |
+| `theme`               | `paper`    | ウインドウ、ペイン、ターミナルのテーマ: Kero のテーマ（`petal`、`mist`、`meadow`、`dusk`、`tide`、`apricot`、`aurora`、`dune`、`onyx`、`paper`、`plain`）、任意の Ghostty テーマ、または `light:paper,dark:dusk` のように外観ごとに |
 | `font-family`         |            | 空欄なら Kero に付属の JetBrains Mono Nerd Font、`monospace` ならシステムのもの、またはインストール済みの任意のファミリー |
 | `font-size`           | `13`       | ポイント単位                                                             |
 | `font-weight`         | `400`      | `100` から `900`                                                         |

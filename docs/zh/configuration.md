@@ -63,7 +63,7 @@ kero config check             # 报告未知的配置项和无效的值
 
 | 配置项                | 默认值  | 说明                                                                     |
 | --------------------- | ------- | ------------------------------------------------------------------------ |
-| `theme`               | `paper` | 窗口、窗格和终端的主题：Kero 主题（`petal`、`mist`、`meadow`、`dusk`、`tide`、`apricot`、`aurora`、`dune`、`paper` 或 `plain`）、任意 Ghostty 主题，或按外观分别设置，如 `light:paper,dark:dusk` |
+| `theme`               | `paper` | 窗口、窗格和终端的主题：Kero 主题（`petal`、`mist`、`meadow`、`dusk`、`tide`、`apricot`、`aurora`、`dune`、`onyx`、`paper` 或 `plain`）、任意 Ghostty 主题，或按外观分别设置，如 `light:paper,dark:dusk` |
 | `font-family`         |         | 留空则使用 Kero 自带的 JetBrains Mono Nerd Font；设为 `monospace` 则使用系统等宽字体；也可以填任何已安装的字体族 |
 | `font-size`           | `13`    | 单位为磅                                                                 |
 | `font-weight`         | `400`   | `100` 到 `900`                                                           |

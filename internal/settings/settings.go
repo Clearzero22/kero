@@ -203,6 +203,7 @@ var KeroThemes = []struct{ ID, Name string }{
 	{"apricot", "apricot"},
 	{"aurora", "aurora"},
 	{"dune", "dune"},
+	{"onyx", "onyx"},
 	{"paper", "paper"},
 	{"plain", "plain"},
 }
